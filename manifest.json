@@ -29,5 +29,5 @@
   "source_pack": "scout-codeops-kit",
   "template": "templates/coverage.example.xml",
   "tests": "tests/test_test_gap_map.py",
-  "version": "1.0.0"
+  "version": "1.1.0"
 }

@@ -195,18 +195,33 @@ def _parse_coveragepy(text: str) -> list[CoverageFile]:
         if not isinstance(info, dict):
             continue
         summary = info.get("summary", {}) if isinstance(info.get("summary"), dict) else {}
+
+        def count(key: str) -> int:
+            """A summary value that is not a number is a broken report, not a zero."""
+            raw = summary.get(key, 0) or 0
+            if isinstance(raw, bool) or not isinstance(raw, (int, float, str)):
+                raise EvidenceError(
+                    f"coverage.py report: {path} has a non-numeric \"{key}\" ({raw!r})"
+                )
+            try:
+                return int(raw)
+            except (TypeError, ValueError) as exc:
+                raise EvidenceError(
+                    f"coverage.py report: {path} has a non-numeric \"{key}\" ({raw!r})"
+                ) from exc
+
         missing_lines = info.get("missing_lines")
         executed = info.get("executed_lines")
         if isinstance(missing_lines, list):
             uncovered = len(missing_lines)
             missing_numbers = sorted(int(n) for n in missing_lines if isinstance(n, int))
         else:
-            uncovered = int(summary.get("missing_lines", 0) or 0)
+            uncovered = count("missing_lines")
             missing_numbers = None
         if isinstance(executed, list):
             covered = len(executed)
         else:
-            covered = int(summary.get("covered_lines", 0) or 0)
+            covered = count("covered_lines")
         num_statements = summary.get("num_statements")
         if isinstance(num_statements, int) and num_statements >= covered + uncovered:
             # trust the reported statement total when it is consistent

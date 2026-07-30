@@ -339,3 +339,37 @@ def test_a_test_file_is_never_reported_as_an_unweighted_gap(write):
         "tests/test_thing.py": [1] * 5 + [0] * 30,
     })))))
     assert "TG008" not in codes(report)
+
+
+# --------------------------------------------------------------------------- #
+# Adversarial regressions.
+# --------------------------------------------------------------------------- #
+
+@pytest.mark.parametrize("value", ['"x"', 'null', '[]', '{}'])
+def test_a_non_numeric_summary_is_an_evidence_error_not_a_crash(write, value):
+    """int() on a non-numeric summary raised ValueError straight through analyze."""
+    payload = '{"files": {"a.py": {"summary": {"missing_lines": 2, "covered_lines": %s}}}}' % value
+    try:
+        analyze(Args(input=str(write("cov.json", payload))))
+    except EvidenceError:
+        return
+    except ValueError as exc:
+        raise AssertionError(f"raw ValueError escaped: {exc}") from exc
+
+
+def test_a_byte_order_mark_does_not_hide_the_format(tmp_path):
+    """PowerShell 5.1 and many editors write a BOM; lstrip() does not remove it."""
+    body = ('<?xml version="1.0" ?><coverage line-rate="0.5"><packages><package><classes>'
+            '<class name="c" filename="app/core.py"><lines>'
+            '<line number="1" hits="1"/><line number="2" hits="0"/>'
+            '</lines></class></classes></package></packages></coverage>')
+    plain = tmp_path / "plain.xml"
+    plain.write_bytes(body.encode("utf-8"))
+    withbom = tmp_path / "bom.xml"
+    withbom.write_bytes(b"\xef\xbb\xbf" + body.encode("utf-8"))
+
+    a = analyze(Args(input=str(plain))).to_dict()
+    b = analyze(Args(input=str(withbom))).to_dict()
+    a.pop("subject", None)
+    b.pop("subject", None)
+    assert a == b, "a BOM changed the result"

@@ -1,0 +1,33 @@
+{
+  "cloud_writes": false,
+  "description": "Rank uncovered code by how much it changes, so tests get written where they matter.",
+  "distribution": "standalone",
+  "engine": "scripts/test_gap_map.py",
+  "entrypoint": "SKILL.md",
+  "exit_codes": {
+    "0": "pass",
+    "1": "review",
+    "2": "block",
+    "3": "evidence error"
+  },
+  "input": "A coverage report (Cobertura XML, LCOV, or coverage.py JSON), optionally with history.",
+  "name": "test-gap-map",
+  "network_required": false,
+  "outputs": [
+    "test-gap-map.json",
+    "test-gap-map.md",
+    "test-gap-map.html"
+  ],
+  "runtime": {
+    "python": ">=3.10",
+    "third_party_packages": []
+  },
+  "schemas": {
+    "output": "references/report-schema.json"
+  },
+  "sends_messages": false,
+  "source_pack": "scout-codeops-kit",
+  "template": "templates/coverage.example.xml",
+  "tests": "tests/test_test_gap_map.py",
+  "version": "1.0.0"
+}

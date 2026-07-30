@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<coverage line-rate="0.5875" branch-rate="0" lines-covered="47" lines-valid="80" version="6.5.0" timestamp="1746300000">
+  <sources>
+    <source>.</source>
+  </sources>
+  <packages>
+    <package name="app" line-rate="0.62">
+      <classes>
+        <class name="payments" filename="app/payments.py" line-rate="0.5">
+          <methods/>
+          <lines>
+            <line number="1" hits="1"/>
+            <line number="2" hits="1"/>
+            <line number="3" hits="1"/>
+            <line number="4" hits="1"/>
+            <line number="5" hits="1"/>
+            <line number="6" hits="1"/>
+            <line number="7" hits="1"/>
+            <line number="8" hits="1"/>
+            <line number="9" hits="1"/>
+            <line number="10" hits="1"/>
+            <line number="11" hits="1"/>
+            <line number="12" hits="1"/>
+            <line number="13" hits="1"/>
+            <line number="14" hits="1"/>
+            <line number="15" hits="1"/>
+            <line number="16" hits="0"/>
+            <line number="17" hits="0"/>
+            <line number="18" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="20" hits="0"/>
+            <line number="21" hits="0"/>
+            <line number="22" hits="0"/>
+            <line number="23" hits="0"/>
+            <line number="24" hits="0"/>
+            <line number="25" hits="0"/>
+            <line number="26" hits="0"/>
+            <line number="27" hits="0"/>
+            <line number="28" hits="0"/>
+            <line number="29" hits="0"/>
+            <line number="30" hits="0"/>
+          </lines>
+        </class>
+        <class name="models" filename="app/models.py" line-rate="1.0">
+          <methods/>
+          <lines>
+            <line number="1" hits="1"/>
+            <line number="2" hits="1"/>
+            <line number="3" hits="1"/>
+            <line number="4" hits="1"/>
+            <line number="5" hits="1"/>
+            <line number="6" hits="1"/>
+            <line number="7" hits="1"/>
+            <line number="8" hits="1"/>
+          </lines>
+        </class>
+        <class name="gateway" filename="app/gateway.py" line-rate="0.0">
+          <methods/>
+          <lines>
+            <line number="1" hits="0"/>
+            <line number="2" hits="0"/>
+            <line number="3" hits="0"/>
+            <line number="4" hits="0"/>
+            <line number="5" hits="0"/>
+            <line number="6" hits="0"/>
+            <line number="7" hits="0"/>
+            <line number="8" hits="0"/>
+            <line number="9" hits="0"/>
+            <line number="10" hits="0"/>
+            <line number="11" hits="0"/>
+            <line number="12" hits="0"/>
+          </lines>
+        </class>
+        <class name="routes" filename="app/routes.py" line-rate="0.7">
+          <methods/>
+          <lines>
+            <line number="1" hits="3"/>
+            <line number="2" hits="3"/>
+            <line number="3" hits="3"/>
+            <line number="4" hits="2"/>
+            <line number="5" hits="2"/>
+            <line number="6" hits="2"/>
+            <line number="7" hits="1"/>
+            <line number="8" hits="1"/>
+            <line number="9" hits="1"/>
+            <line number="10" hits="1"/>
+            <line number="11" hits="1"/>
+            <line number="12" hits="1"/>
+            <line number="13" hits="1"/>
+            <line number="14" hits="1"/>
+            <line number="15" hits="0"/>
+            <line number="16" hits="0"/>
+            <line number="17" hits="0"/>
+            <line number="18" hits="0"/>
+            <line number="19" hits="0"/>
+            <line number="20" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="tests" line-rate="1.0">
+      <classes>
+        <class name="test_payments" filename="tests/test_payments.py" line-rate="1.0">
+          <methods/>
+          <lines>
+            <line number="1" hits="1"/>
+            <line number="2" hits="1"/>
+            <line number="3" hits="1"/>
+            <line number="4" hits="1"/>
+            <line number="5" hits="1"/>
+            <line number="6" hits="1"/>
+            <line number="7" hits="1"/>
+            <line number="8" hits="1"/>
+            <line number="9" hits="1"/>
+            <line number="10" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
